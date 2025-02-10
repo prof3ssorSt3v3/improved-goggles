@@ -48,18 +48,29 @@ function init() {
   log('yikes', 'warn');
   log('ah crap!!!', 'error');
 
-  feedback('Something happened', 'info');
+  // feedback('Something happened', 'info');
+
+  try {
+    throw new Error('things happened.');
+  } catch (err) {
+    if (err.name === 'Error') {
+      log(err.message, 'error');
+    } else if (err.name === 'FetchError') {
+      log(err.message, 'warn');
+      feedback('Sorry. No Data Today.', 'error');
+    }
+  }
 }
 
-function feedback(msg, level = 'info') {
+function feedback(msg, level = 'info', ttl) {
   let dialog = document.getElementById('feedback');
   let title = dialog.querySelector('.title');
   let message = dialog.querySelector('.message');
   let button = dialog.querySelector('.actions button');
-  title.textContent = 'User feedback';
+  title.textContent = ttl ?? 'Information';
   message.textContent = msg;
   dialog.className = level;
-  document.body.classList.add(level);
+  document.body.className = level;
   dialog.showModal();
   button.addEventListener('click', (ev) => dialog.close(), { once: true });
 

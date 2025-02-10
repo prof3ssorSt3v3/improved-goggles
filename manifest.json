@@ -1,0 +1,17 @@
+{
+  "name": "janine",
+  "short_name": "jan",
+  "display": "standalone",
+  "start_url": "./index.html",
+  "description": "John loves this app",
+  "icons": [
+    {
+      "src": "./img/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    }
+  ],
+  "orientation": "portrait-primary",
+  "theme_color": "#bada55",
+  "background_color": "#eeeeee"
+}

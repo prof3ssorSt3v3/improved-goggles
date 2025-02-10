@@ -30,7 +30,7 @@ let mode = (() => {
 const log = (msg, level = 'info') => {
   switch (level) {
     case 'info':
-      if (mode == MODE.DEV) {
+      if (mode === MODE.DEV) {
         console.log(msg);
       }
       break;
@@ -47,4 +47,44 @@ function init() {
   log('hello');
   log('yikes', 'warn');
   log('ah crap!!!', 'error');
+
+  feedback('Something happened', 'info');
 }
+
+function feedback(msg, level = 'info') {
+  let dialog = document.getElementById('feedback');
+  let title = dialog.querySelector('.title');
+  let message = dialog.querySelector('.message');
+  let button = dialog.querySelector('.actions button');
+  title.textContent = 'User feedback';
+  message.textContent = msg;
+  dialog.className = level;
+  document.body.classList.add(level);
+  dialog.showModal();
+  button.addEventListener('click', (ev) => dialog.close(), { once: true });
+
+  switch (level) {
+    case 'info':
+      break;
+    case 'warn':
+      break;
+    case 'error':
+      break;
+    case 'success':
+      break;
+  }
+}
+
+// let obj = {};
+// let obj2 = {};
+// let obj3 = obj;
+
+// if (obj == obj2) {
+//   log('same value'); // no
+// }
+// if (obj === obj2) {
+//   log('same object'); // no
+// }
+// if (obj3 === obj) {
+//   log('obj and obj3 are the same object'); //yes
+// }

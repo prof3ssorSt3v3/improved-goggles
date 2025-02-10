@@ -2,3 +2,52 @@
   box-sizing: border-box;
   font-family: 'Funnel Sans', sans-serif;
 }
+::backdrop {
+  background-color: hsla(0, 0%, 10%, 0.48);
+}
+body.error ::backdrop {
+  background-color: fuchsia;
+}
+dialog {
+  & .actions {
+    text-align: center;
+  }
+  & button {
+    outline: none;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.25rem 2rem;
+  }
+  &.info {
+    color: cornflowerblue;
+
+    & button {
+      background-color: cornflowerblue;
+      color: white;
+    }
+  }
+  &.warn {
+    color: goldenrod;
+
+    & button {
+      background-color: goldenrod;
+      color: white;
+    }
+  }
+  &.error {
+    color: red;
+
+    & button {
+      background-color: red;
+      color: white;
+    }
+  }
+  &.success {
+    color: green;
+
+    & button {
+      background-color: green;
+      color: white;
+    }
+  }
+}
